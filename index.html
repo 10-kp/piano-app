@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Piano Master">
+  <meta name="theme-color" content="#16213e">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <title>Piano Master</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- HOME -->
+    <div id="page-home" class="page active">
+      <div class="page-header">
+        <h1>Piano Master</h1>
+        <button class="icon-btn" onclick="window.location.hash='settings'" title="Settings">&#9881;</button>
+      </div>
+      <div id="home-content" class="page-body"></div>
+    </div>
+
+    <!-- CURRICULUM -->
+    <div id="page-curriculum" class="page">
+      <div class="page-header">
+        <h1>Piano Master</h1>
+      </div>
+      <div id="curriculum-content" class="page-body"></div>
+    </div>
+
+    <!-- GRADE DETAIL -->
+    <div id="page-grade" class="page">
+      <div class="page-header">
+        <h1>Piano Master</h1>
+      </div>
+      <div id="grade-content" class="page-body"></div>
+    </div>
+
+    <!-- LESSON / PLAY-ALONG -->
+    <div id="page-lesson" class="page">
+      <div class="page-header">
+        <h1>Piano Master</h1>
+      </div>
+      <div id="lesson-content" class="page-body"></div>
+    </div>
+
+    <!-- SONGS -->
+    <div id="page-songs" class="page">
+      <div class="page-header">
+        <h1>Piano Master</h1>
+      </div>
+      <div id="songs-content" class="page-body"></div>
+    </div>
+
+    <!-- PRACTICE -->
+    <div id="page-practice" class="page">
+      <div class="page-header">
+        <h1>Piano Master</h1>
+      </div>
+      <div id="practice-content" class="page-body"></div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="page-settings" class="page">
+      <div class="page-header">
+        <h1>Piano Master</h1>
+      </div>
+      <div id="settings-content" class="page-body"></div>
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-page="home">
+        <span class="nav-icon">&#8962;</span>
+        <span class="nav-label">Home</span>
+      </button>
+      <button class="nav-btn" data-page="curriculum">
+        <span class="nav-icon">&#128218;</span>
+        <span class="nav-label">Learn</span>
+      </button>
+      <button class="nav-btn" data-page="songs">
+        <span class="nav-icon">&#9835;</span>
+        <span class="nav-label">Songs</span>
+      </button>
+      <button class="nav-btn" data-page="practice">
+        <span class="nav-icon">&#127929;</span>
+        <span class="nav-label">Practice</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Portrait orientation warning -->
+  <div id="rotate-overlay" class="rotate-overlay">
+    <div class="rotate-message">
+      <span class="rotate-icon">&#128260;</span>
+      <p>Please rotate your iPad to landscape mode for the best experience.</p>
+    </div>
+  </div>
+
+  <!-- abcjs library -->
+  <script src="https://cdn.jsdelivr.net/npm/abcjs@6/dist/abcjs-basic-min.js"></script>
+
+  <!-- App scripts (order matters) -->
+  <script src="js/pitch-detector.js"></script>
+  <script src="js/metronome.js"></script>
+  <script src="js/progress.js"></script>
+  <script src="js/curriculum.js"></script>
+  <script src="js/songs.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => {
+          console.log('SW registration failed:', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
